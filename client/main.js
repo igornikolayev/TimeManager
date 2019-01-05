@@ -25,6 +25,7 @@ Template.body.events({
     Task.insert({
       text,
       time,
+      declare: 0,
       createdAt: new Date(),
       owner: Meteor.userId(),
       username: Meteor.user().username,
@@ -45,11 +46,13 @@ Template.body.events({
     document.getElementById("change").value = ""
   },
   'click #declare-time'() {
-    const times = document.getElementById("declare").value;
+    const declare = document.getElementById("declare").value;
     Task.update(this._id, {
       $set: {
-        time: this.time - times
+        time: this.time - declare,
+        declare: parseInt(this.declare) + parseInt(declare)
       },
+
     });
     document.getElementById("declare").value = ""
   },
