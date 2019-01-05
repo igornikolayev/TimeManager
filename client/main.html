@@ -1,0 +1,115 @@
+<head>
+    <title>Taskmanager</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <header class="bg-primary text-white">
+        <div class="container">
+            <nav class="nav navigation">
+                <div class="navbar-brand navigation__logo">
+                    Time manager
+                </div>
+                <ul class="nav navigation__list">
+                    <li class="nav-item">
+                        {{> loginButtons}}
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="list">
+                <h3 class="list__head">List of projects</h3>
+                {{#if currentUser}}
+                <div class="input-field">
+                    <h7 class="input-field__text alert alert-primary">
+                        Here input time for change project and press button opposite your project to confirm changes
+                    </h7>
+                    <div class="input">
+                        <input id="change" class="form-control task__show__input" type="number" placeholder="change time">
+                        <input id="declare" class="form-control task__show__input" type="number" placeholder="declare time">
+                    </div>
+                </div>
+                {{/if}}
+                <ul class="list-inline">
+                    {{#if currentUser}}
+                    {{#each tasks}}
+                    {{>task}}
+                    {{/each}}
+                    {{else}}
+                    <strong>
+                        <p>Please, log in to see projects</p>
+                    </strong>
+                    {{/if}}
+                    {{> modalCreate}}
+                </ul>
+            </div>
+            {{#if currentUser}}
+            <div class="add-task">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newTask">
+                    Add new project
+                </button>
+            </div>
+            {{/if}}
+        </div>
+    </main>
+    <footer class="bg-primary text-white navbar-fixed-bottom  ">
+        <div class="container">
+            <p class="copy"> (C) by Igor Nikolayev</p>
+            <p> time manager</p>
+        </div>
+    </footer>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+</body>
+
+<template name="task">
+    <li class="list-group-item task__show">
+        <div class="task__show__text">
+            <p class="task__show__text__task">Project: <strong>{{text}}</strong> </p>
+            <p class="task__show__text__time">Remaining time: <strong>{{time}}</strong> hours</p>
+            <span class="task__show__text__time">
+                by
+                <strong>
+                    {{username}}
+                </strong>
+            </span>
+        </div>
+        <div class="task__show__buttons">
+            <button class="btn btn-success" id="change-time" type="button">
+                Change time
+            </button>
+            <button class="btn btn-success" id="declare-time" type="button">
+                Declare time
+            </button>
+            <button class="btn btn-success" id="delete-task" type="button">
+                Delete task
+            </button>
+        </div>
+    </li>
+</template>
+<template name="modalCreate">
+    <div class="modal fade" id="newTask" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="my-input">New Project</label>
+                        <input id="task" class="form-control" type="text">
+                        <label for="my-input">Time for project(in hours)</label>
+                        <input id="time" class="form-control" type="number">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="addnewtask" class="btn
+                        btn-primary">Save </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

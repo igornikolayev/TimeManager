@@ -1,0 +1,116 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+p {
+  margin: 0;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px
+}
+
+.navigation__list {
+  margin-right: 20px;
+}
+
+.task__show {
+  position: relative;
+}
+
+.task__show__text {
+  display: flex;
+  flex-direction: row
+}
+
+.task__show__text__task {
+  font-size: 20px;
+  font-weight: 400;
+
+}
+
+.task__show__text__time {
+  margin-left: 20px;
+  font-size: 20px;
+}
+
+.task__show__buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.task__show__buttons button {
+  margin-right: 10px;
+}
+
+.task__show__input {
+  max-width: 120px;
+  position: relative;
+}
+
+.task__input {
+  position: relative;
+  display: none;
+}
+
+.task__show__input__btn {
+  position: absolute;
+  top: 0;
+  left: 150px
+}
+
+.task__show__input__btn-2 {
+  position: absolute;
+  top: 0;
+  left: 100px
+}
+
+.list {
+  position: relative;
+  margin-top: 40px;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-right: 130px;
+}
+
+.input-field__text {
+  max-width: 400px;
+  position: relative;
+  left: 100px;
+}
+
+.input {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.input input {
+  margin-right: 10px;
+}
+
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.add-task {
+  padding-bottom: 20px
+}
